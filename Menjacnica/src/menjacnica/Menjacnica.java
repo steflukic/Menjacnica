@@ -12,20 +12,39 @@ public class Menjacnica implements MenjacnicaInterfejs {
 	@Override
 	public void dodajKursValuteNaDan(String nazivNove, String skracenicaNove, GregorianCalendar datumNove,
 			double kupovniNove, double prodajniNove, double srednjiNove) {
-		// TODO Auto-generated method stub
-
+		Valuta v = new Valuta();
+		v.setDatum(datumNove);
+		v.setNaziv(nazivNove);
+		v.setSkracenica(skracenicaNove);
+		v.setKupovni(kupovniNove);
+		v.setProdajni(prodajniNove);
+		v.setSrednji(srednjiNove);
+		
+		valute.add(v);
 	}
 
 	@Override
 	public Valuta pronadjiKursValuteNaDan(String skracenica, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
-		return null;
+		Valuta v = new Valuta();
+		for (int i = 0; i<valute.size(); i++) {
+			if(valute.get(i).getDatum().get(GregorianCalendar.DAY_OF_MONTH)==datum.get(GregorianCalendar.DAY_OF_MONTH)
+					&& valute.get(i).getSkracenica().equals(skracenica)) {
+				v = valute.get(i);
+				break;
+			}
+		}
+		return v;
 	}
 
 	@Override
 	public void brisanjeKursaValuteNaDan(String skracenica, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
-
+		for (int i = 0; i<valute.size(); i++) {
+			if(valute.get(i).getDatum().get(GregorianCalendar.DAY_OF_MONTH)==datum.get(GregorianCalendar.DAY_OF_MONTH)
+					&& valute.get(i).getSkracenica().equals(skracenica)) {
+				valute.remove(valute.get(i));
+				break;
+			}
+		}
 	}
 
 	@Override

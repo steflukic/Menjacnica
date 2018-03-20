@@ -22,7 +22,7 @@ public class Menjacnica implements MenjacnicaInterfejs {
 		
 		for (int i = 0; i<valute.size(); i++) {
 			if(valute.get(i).getDatum().get(GregorianCalendar.DAY_OF_MONTH)==datumNove.get(GregorianCalendar.DAY_OF_MONTH)
-					&& valute.get(i).getSkracenica().equals(skracenicaNove)) {
+					&& valute.get(i).getSkracenica().equals(skracenicaNove) && valute.get(i).getSrednji()==v.getSrednji()) {
 				if(valute.get(i)==null){
 					valute.add(v);
 					break;
